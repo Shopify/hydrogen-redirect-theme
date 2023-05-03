@@ -13,7 +13,7 @@ The sole purpose of this Liquid theme is to automatically redirect customers tha
 
 ## Installation
 
-1. Download the [shopify-headless-theme-master.zip](https://github.com/instantcommerce/shopify-headless-theme/archive/refs/heads/master.zip) file
+1. Download the [shopify-headless-theme-master.zip](https://github.com/benjaminsehl/shopify-headless-theme/archive/refs/heads/master.zip) file
 2. Navigate to **Online Store > Themes** in your Shopify admin
 3. Upload the theme to your **Theme Library**
 4. Click the **Customize** button of the newly installed theme
@@ -42,10 +42,6 @@ The example below removes the `/account` prefix from the login, register and res
 /account/reset > /reset-password
 /account/activate > /activate-account
 ```
-
-## Multipass login
-
-Enable the `multipass_login` option in **Theme settings > Storefront** if you implemented [Multipass](https://shopify.dev/api/multipass) (a Shopify Plus feature) in your storefront. Enabling this feature will also redirect customers from the Shopify login page to your custom storefront. If not enabled, a customizable login page will be shown when customers click the "Log in" link in the checkout.
 
 ## Gift cards
 
