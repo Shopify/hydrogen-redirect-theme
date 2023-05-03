@@ -1,6 +1,7 @@
 # Headless/Hydrogen Redirect Theme
 
 Liquid theme that automatically redirects customers to your custom storefront.
+
 [Download theme](https://github.com/benjaminsehl/shopify-headless-theme/archive/refs/heads/master.zip)
 
 ---
