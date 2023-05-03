@@ -155,6 +155,22 @@
 
     {%- if settings.storefront_hostname != blank and should_redirect -%}
     <script>
+      function getCookie(name) {
+        name = name + '=';
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var cookies = decodedCookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          if (cookie.indexOf(name) == 0) {
+            return cookie.substring(name.length, cookie.length);
+          }
+        }
+      }
+
+      function deleteCookie(name) {
+        document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      }
+
       if (!window.Shopify.designMode) {
         var currentHostname = window.location.hostname;
         var storefrontHostname = "{{ settings.storefront_hostname }}";
@@ -171,11 +187,24 @@
               var fromPath = redirect[0];
               var toPath = redirect[1];
   
-              if (fromPath && toPath && redirectUrl.startsWith(storefrontBaseUrl + fromPath)) {
-                redirectUrl = redirectUrl.replace(storefrontBaseUrl + fromPath, storefrontBaseUrl + toPath);
+              if (fromPath && toPath && redirectUrl.startsWith('https://' + storefrontHostname + fromPath)) {
+                redirectUrl = redirectUrl.replace(storefrontHostname + fromPath, storefrontHostname + toPath);
                 break;
               }
             }
+          }
+
+          redirectUrl = new URL(redirectUrl);
+
+          {% comment %} 
+            Handle discount code logic (e.g. xxx.myshopify.com/discount/freeshipping?redirect=/products)
+            - Add discount code to as param to the edirect URL if the `discount_code` cookie exists
+            - Cookie is deleted after to prevent it from being automatically added to other routes
+          {% endcomment %}
+          var discountCode = getCookie('discount_code');
+          if (discountCode) {
+            redirectUrl.searchParams.append("discount", discountCode);
+            deleteCookie("discount_code");
           }
 
           window.storefrontRedirectUrl = redirectUrl;
