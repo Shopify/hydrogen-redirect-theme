@@ -1,6 +1,7 @@
 {
   "current": {
-    "storefront_hostname": "sehl.ca",
+    "storefront_hostname": "margin.global",
+    "custom_redirects": "\/pages\/about > \/about",
     "content_for_index": [
 
     ]
