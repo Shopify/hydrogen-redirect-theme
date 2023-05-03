@@ -1,9 +1,0 @@
-{
-  "current": {
-    "storefront_hostname": "margin.global",
-    "custom_redirects": "\/pages\/about > \/about",
-    "content_for_index": [
-
-    ]
-  }
-}
