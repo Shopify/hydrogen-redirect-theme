@@ -34,5 +34,5 @@
         "info": "If multipass is implemented the login will also redirect to your storefront [Learn more](https://shopify.dev/api/multipass)"
       }
     ]
-  },
+  }
 ]
