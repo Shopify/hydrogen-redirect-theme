@@ -1,16 +1,11 @@
-<p align="center">
-  <a href="https://instantcommerce.io/" target="_blank" align="center">
-    <img src="https://avatars.githubusercontent.com/u/93975473?s=200" alt="Instant Commerce" width="100">
-  </a>
-  <h1 align="center">shopify-headless-theme</h1>
-  <p align="center">
-    Liquid theme that automatically redirects customers to your custom storefront.<br>
-    <a href="https://github.com/instantcommerce/shopify-headless-theme/archive/refs/heads/master.zip" download>Download theme</a></p>
-</p>
+# A Theme for Headless
+
+Liquid theme that automatically redirects customers to your custom storefront.
+[Download theme](https://github.com/benjaminsehl/shopify-headless-theme/archive/refs/heads/master.zip)
 
 ---
 
-## Purpose
+## Overview
 
 When using a headless Shopify setup, you normally don't want customers to access any of the theme pages except the checkout. However, you can't totally disable the theme and a lot of links will still point to the theme (e.g. links in emails, plugins and the checkout).
 
@@ -55,3 +50,6 @@ Enable the `multipass_login` option in **Theme settings > Storefront** if you im
 ## Gift cards
 
 Since the Shopify Storefront API unfortunately does not support fetching gift cards yet, a customizable `gift_card.liquid` template has been added.
+
+### Credit
+This was based on a theme from a similar theme from Instant Commerce, which you can [find here](https://github.com/instantcommerce/shopify-headless-theme), and merges in some previous work I'd published as [a gist here](https://gist.github.com/benjaminsehl/cdd0ce53951659db1266276cda854285).
