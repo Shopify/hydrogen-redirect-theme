@@ -4,8 +4,8 @@
     "theme_name": "Redirects for Hydrogen & Headless",
     "theme_author": "Shopify",
     "theme_version": "1.0.0",
-    "theme_documentation_url": "https://github.com/Shopify/shopify-headless-theme",
-    "theme_support_url": "https://github.com/Shopify/shopify-headless-theme/issues"
+    "theme_documentation_url": "https://github.com/Shopify/hydrogen-redirect-theme",
+    "theme_support_url": "https://github.com/Shopify/hydrogen-redirect-theme/issues"
   },
   {
     "name": "Storefront",
@@ -19,12 +19,6 @@
         "id": "storefront_hostname",
         "label": "Hostname",
         "info": "Without protocol, e.g. mydomain.com"
-      },
-      {
-        "type": "textarea",
-        "id": "custom_redirects",
-        "label": "Custom redirects",
-        "info": "Shopify path > Storefront path [Learn more](https://github.com/instantcommerce/shopify-headless-theme#custom-redirects)"
       }
     ]
   }
