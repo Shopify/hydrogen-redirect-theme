@@ -16,6 +16,29 @@ detection checkpoint, and discount links.
 5. Go to **Theme settings -> Storefront** and configure `storefront_hostname`
 6. **Publish** the theme
 
+## Custom redirects
+
+You can configure the `custom_redirects` value in **Theme settings > Storefront**.
+
+The redirect rule format is as following:
+
+```
+Shopify path > Storefront path
+```
+
+Each line in the textarea represents a single redirect rule.
+
+### Example configuration
+
+The example below removes the `/account` prefix from the login, register and reset password redirects.
+
+```
+/account/login > /login
+/account/register > /register
+/account/reset > /reset-password
+/account/activate > /activate-account
+```
+
 ## Gift cards
 
 Since the Shopify Storefront API does not yet support fetching gift cards, a customizable `gift_card.liquid` template has been added.

@@ -24,7 +24,7 @@
         "type": "textarea",
         "id": "custom_redirects",
         "label": "Custom redirects",
-        "info": "Shopify path > Storefront path [Learn more](https://github.com/instantcommerce/shopify-headless-theme#custom-redirects)"
+        "info": "Shopify path > Storefront path [Learn more](https://github.com/Shopify/hydrogen-redirect-theme#custom-redirects)"
       }
     ]
   }
