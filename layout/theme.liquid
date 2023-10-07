@@ -6,21 +6,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-    <meta name="robots" content="noindex" />
+    <meta name="robots" content="noindex">
     <title>
       {{ page_title }}
     </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 
     {{ content_for_header }}
-    
+
     {% comment %}
       Should redirect if the template is defined (will be undefined for app proxies like /apps|a|community|tools/*)
     {% endcomment %}
     {%- assign should_redirect = template != blank -%}
 
     {%- if settings.storefront_hostname != blank and should_redirect -%}
-    <script>
+      <script>
+
+
       function getCookie(name) {
         name = name + '=';
         var decodedCookie = decodeURIComponent(document.cookie);
@@ -47,12 +48,12 @@
           var customRedirectsStr = "{{ settings.custom_redirects | newline_to_br | strip_newlines | replace: ' ', '' }}";
           if (customRedirectsStr) {
             var customRedirects = customRedirectsStr.split('<br/>');
-  
+
             for (var cri = 0; cri < customRedirects.length; cri += 1) {
               var redirect = customRedirects[cri].split('>');
               var fromPath = redirect[0];
               var toPath = redirect[1];
-  
+
               if (fromPath && toPath && redirectUrl.startsWith('https://' + storefrontHostname + fromPath)) {
                 redirectUrl = redirectUrl.replace(storefrontHostname + fromPath, storefrontHostname + toPath);
                 break;
@@ -62,7 +63,7 @@
 
           redirectUrl = new URL(redirectUrl);
 
-          {% comment %} 
+          {% comment %}
             Handle discount code logic (e.g. xxx.myshopify.com/discount/freeshipping?redirect=/products)
             - Add discount code to as param to the edirect URL if the `discount_code` cookie exists
             - Cookie is deleted after to prevent it from being automatically added to other routes
@@ -76,31 +77,75 @@
           window.location.replace(redirectUrl);
         }
       }
-    </script>
+
+
+      </script>
     {%- endif -%}
+
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui;
+        box-sizing: border-box;
+        padding: clamp(1em, 5vw, 5em);
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        line-height: 1.5;
+      }
+      h1 {
+        color: inherit;
+        font-size: 1em;
+      }
+      h1 > a {
+        text-decoration: none;
+        color: inherit;
+      }
+      p {
+        max-width: 65ch;
+      }
+      footer {
+        opacity: 0.55;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #a1b8c1;
+          background: rgb(33, 33, 33);
+        }
+        a {
+          color: #81a9fe;
+        }
+        a:visited {
+          color: #c691e8;
+        }
+        h1 > a,
+        h1 > a:visited {
+          color: #a1b8c1;
+        }
+      }
+    </style>
   </head>
   <body>
-    {{ content_for_layout }}
-
     {%- if should_redirect -%}
       <div class="redirect">
         {%- if settings.storefront_hostname != blank -%}
-        <h1>Redirecting...</h1>
-        <p>
-          <a id="redirect-link" href="https://{{ settings.storefront_hostname }}/">Click here</a>
-          if you are not automically redirected.
-        </p>
-        <script>
-          if (!window.Shopify.designMode) {
-            var redirectLink = document.getElementById("redirect-link");
-            redirectLink.href = window.storefrontRedirectUrl;
-          }
-        </script>
+          <h1>Redirecting...</h1>
+          <p>
+            <a id="redirect-link" href="https://{{ settings.storefront_hostname }}/">Click here</a>
+            if you are not automically redirected.
+          </p>
+          <script>
+            if (!window.Shopify.designMode) {
+              var redirectLink = document.getElementById('redirect-link');
+              redirectLink.href = window.storefrontRedirectUrl;
+            }
+          </script>
         {%- else -%}
-        <h1>Redirect URL not set</h1>
-        <p>Configure the redirects in "Theme settings > Storefront".</p>
+          <h1>Redirect URL not set</h1>
+          <p>Configure the redirects in "Theme settings > Storefront".</p>
         {%- endif -%}
       </div>
     {%- endif -%}
+    {{ content_for_layout }}
   </body>
 </html>
