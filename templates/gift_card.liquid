@@ -14,7 +14,12 @@
 
     {%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros | strip_html -%}
 
-    <title>{{ "Here's your {{ value }} gift card for {{ shop }}!" | t: value: formatted_initial_value, shop: shop.name }}</title>
+    <title>
+      {{ "Here's your {{ value }}
+      gift card for
+      {{ shop }}
+      !" | t: value: formatted_initial_value, shop: shop.name }}
+    </title>
 
     <meta name="description" content="Your gift card">
 
@@ -25,7 +30,7 @@
 
   <body class="gradient">
     <header class="gift-card__title">
-      <span class="h2">{{ shop.name }}</span>
+      <span>{{ shop.name }}</span>
       <h1 class="gift-card__heading">Your gift card</h1>
       <div class="gift-card__price">
         <p>
@@ -44,7 +49,14 @@
 
     <main class="gift-card">
       <div class="gift-card__image-wrapper">
-        <img src="{{ 'gift-card/card.svg' | shopify_asset_url }}" alt="" class="gift-card__image" height="{{ 570 | divided_by: 1.5 }}" width="570" loading="lazy">
+        <img
+          src="{{ 'gift-card/card.svg' | shopify_asset_url }}"
+          alt=""
+          class="gift-card__image"
+          height="{{ 570 | divided_by: 1.5 }}"
+          width="570"
+          loading="lazy"
+        >
       </div>
       <div class="gift-card__qr-code" data-identifier="{{ gift_card.qr_identifier }}"></div>
       <div class="gift-card__information">
@@ -59,24 +71,44 @@
           <button class="link gift-card__copy-link">Copy code</button>
           <span class="gift-card__copy-success form__message" role="status"></span>
           <template>
-            {%- render 'icon-success' -%}Code copied successfully
+            {%- render 'icon-success' -%}
+            Code copied successfully
           </template>
         </div>
         {%- if gift_card.pass_url -%}
           <a href="{{ gift_card.pass_url }}" class="gift_card__apple-wallet">
-            <img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}" loading="lazy">
+            <img
+              src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}"
+              width="120"
+              height="40"
+              alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}"
+              loading="lazy"
+            >
           </a>
         {%- endif -%}
         <div class="gift-card__buttons no-print">
-          <a
-            href="{{ shop.url }}"
-            class="button"
-            target="_blank"
-            rel="noopener"
-            aria-describedby="a11y-new-window-message"
-          >
-            Continue shopping
-          </a>
+          {% if settings.storefront_hostname %}
+            <a
+              href="https://{{ settings.storefront_hostname }}"
+              class="button"
+              target="_blank"
+              rel="noopener"
+              aria-describedby="a11y-new-window-message"
+            >
+              Continue shopping
+            </a>
+          {% else %}
+            <a
+              href="{{ shop.url }}"
+              class="button"
+              target="_blank"
+              rel="noopener"
+              aria-describedby="a11y-new-window-message"
+            >
+              Continue shopping
+            </a>
+          {% endif %}
+
           <button
             class="button button--secondary"
             onclick="window.print();"
