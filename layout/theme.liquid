@@ -41,7 +41,7 @@
           document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
 
-        if (!window.Shopify.designMode) {
+        if (!window.Shopify.designMode && window.location.pathname !== '/checkpoint') {
           var currentHostname = window.location.hostname;
           var storefrontHostname = "{{ settings.storefront_hostname }}";
 
