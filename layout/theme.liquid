@@ -41,7 +41,12 @@
           document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
 
-        if (!window.Shopify.designMode && window.location.pathname !== '/checkpoint' && window.location.pathname !== '/throttle/queue' ) {
+        if (
+          !window.Shopify.designMode && 
+            window.location.pathname !== '/checkpoint' &&
+            window.location.pathname !== '/throttle/queue' &&
+            window.location.pathname !== '/challenge'
+        ) {
           var currentHostname = window.location.hostname;
           var storefrontHostname = "{{ settings.storefront_hostname }}";
 
