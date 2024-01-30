@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2023 Shopify, Inc.
+Copyright (c) 2023-present, Shopify, Inc.
 
 Copyright (c) 2021 Instant Commerce
 
