@@ -25,6 +25,12 @@
         "id": "custom_redirects",
         "label": "Custom redirects",
         "info": "Shopify path > Storefront path [Learn more](https://github.com/Shopify/hydrogen-redirect-theme#custom-redirects)"
+      },
+      {
+        "type": "checkbox",
+        "id": "integrate_with_customer_accounts",
+        "label": "Integrate with customer accounts",
+        "info": " [Learn more](https://help.shopify.com/en/manual/customers/customer-accounts/new-customer-accounts)"
       }
     ]
   }
