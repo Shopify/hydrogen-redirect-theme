@@ -42,7 +42,7 @@
         }
 
         if (
-          !window.Shopify.designMode && 
+          !window.Shopify.designMode &&
             window.location.pathname !== '/checkpoint' &&
             window.location.pathname !== '/throttle/queue' &&
             window.location.pathname !== '/challenge'
@@ -70,6 +70,14 @@
             }
 
             redirectUrl = new URL(redirectUrl);
+
+            {%- if settings.integrate_with_customer_accounts and customer != null -%}
+              redirectUrl.searchParams.append('logged_in', 'true');
+
+              {%- if customer.current_location != null -%}
+                redirectUrl.searchParams.append('company_location_id', '{{ customer.current_location.id }}');
+              {%- endif -%}
+            {%- endif -%}
 
             {% comment %}
               Handle discount code logic (e.g. xxx.myshopify.com/discount/freeshipping?redirect=/products)

@@ -39,6 +39,15 @@ The example below removes the `/account` prefix from the login, register and res
 /account/activate > /activate-account
 ```
 
+## Customer accounts integration
+
+You can integrate with [customer accounts](https://help.shopify.com/en/manual/customers/customer-accounts/new-customer-accounts) by enabling it in **Theme settings > Integrate with customer accounts**.
+
+This will add query params to the redirect URL based on the situation:
+
+- `logged_in=true`: Present only if the customer has logged in. You can use this value to initiate a [login](https://shopify.dev/docs/api/hydrogen/2024-01/utilities/createcustomeraccountclient#returns-propertydetail-login) that should be transparent to the customer.
+- `company_location_id=<id>`: Present only if your store is B2B-enabled, a B2B customer has logged in, and has selected a location. Your storefront should still confirm whether the customer has access to this location through the Customer Account API.
+
 ## Gift cards
 
 Since the Shopify Storefront API does not yet support fetching gift cards, a customizable `gift_card.liquid` template has been added.
