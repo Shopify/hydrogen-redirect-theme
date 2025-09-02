@@ -9,6 +9,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && mkdir dist && zip -r ./dist/hydrogen-redirect-theme.zip ./*"
+    "build": "rm -rf dist && mkdir dist && zip -r ./dist/wordpress-redirect-theme.zip ./*"
   }
 }
