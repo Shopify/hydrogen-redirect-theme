@@ -4,22 +4,24 @@
     "theme_name": "WordPress Redirect",
     "theme_author": "Shopify",
     "theme_version": "1.0.0",
-    "theme_documentation_url": "https://github.com/Shopify/hydrogen-redirect-theme",
-    "theme_support_url": "https://github.com/Shopify/hydrogen-redirect-theme/issues"
+    "theme_documentation_url": "https://help.shopify.com/manual/online-sales-channels/wordpress/manage-checkout-traffic#wordpress-theme",
+    "theme_support_url": "https://help.shopify.com/"
   },
   {
-    "name": "Storefront",
+    "name": "Manage checkout traffic",
     "settings": [
-      {
-        "type": "header",
-        "content": "Settings"
-      },
       {
         "type": "text",
         "id": "storefront_hostname",
-        "label": "Hostname",
-        "info": "Without protocol, e.g. mydomain.com"
-      },
+        "label": "Redirect URL",
+        "info": "Where customers go when they click your logo at checkout. Exclude http:// or https://.",
+        "placeholder": "your-wordpress.com"
+      }
+    ]
+  },
+  {
+    "name": "Custom redirects",
+    "settings": [
       {
         "type": "textarea",
         "id": "custom_redirects",
