@@ -47,11 +47,19 @@
             window.location.pathname !== '/throttle/queue' &&
             window.location.pathname !== '/challenge'
         ) {
-          var currentHostname = window.location.hostname;
-          var storefrontHostname = "{{ settings.storefront_hostname }}";
+          var currentUrl = new URL(window.location.href);
+          var storefrontConfigHostname = "{{ settings.storefront_hostname }}";
+          var storefrontUrl = new URL(
+            storefrontConfigHostname.startsWith('http') ? storefrontConfigHostname : `https://${storefrontConfigHostname}`
+          );
 
-          if (currentHostname !== storefrontHostname) {
-            var redirectUrl = window.location.href.replace(currentHostname, storefrontHostname);
+          if (currentUrl.hostname !== storefrontUrl.hostname) {
+            var redirectUrl = new URL(currentUrl);
+            redirectUrl.hostname = storefrontUrl.hostname;
+            // Merge search params from both currentUrl and storefrontUrl
+            storefrontUrl.searchParams.forEach(function(value, key) {
+              redirectUrl.searchParams.append(key, value);
+            });
 
             var customRedirectsStr = "{{ settings.custom_redirects | newline_to_br | strip_newlines | replace: ' ', '' }}";
             if (customRedirectsStr) {
@@ -62,14 +70,12 @@
                 var fromPath = redirect[0];
                 var toPath = redirect[1];
 
-                if (fromPath && toPath && redirectUrl.startsWith('https://' + storefrontHostname + fromPath)) {
-                  redirectUrl = redirectUrl.replace(storefrontHostname + fromPath, storefrontHostname + toPath);
+                if (fromPath && toPath && redirectUrl.pathname.startsWith(fromPath)) {
+                  redirectUrl.pathname = redirectUrl.pathname.replace(fromPath, toPath);
                   break;
                 }
               }
             }
-
-            redirectUrl = new URL(redirectUrl);
 
             {%- if settings.integrate_with_customer_accounts and customer != null -%}
               redirectUrl.searchParams.append('logged_in', 'true');
