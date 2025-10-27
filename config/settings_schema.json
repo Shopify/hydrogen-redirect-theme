@@ -8,13 +8,13 @@
     "theme_support_url": "https://help.shopify.com/"
   },
   {
-    "name": "Manage checkout traffic",
+    "name": "Manage URL redirects",
     "settings": [
       {
         "type": "text",
         "id": "storefront_hostname",
         "label": "Redirect URL",
-        "info": "Where customers go when they click your logo at checkout. Exclude http:// or https://.",
+        "info": "Exclude http:// or https://.",
         "placeholder": "your-wordpress.com"
       }
     ]
