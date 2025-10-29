@@ -13,7 +13,7 @@
       {
         "type": "text",
         "id": "storefront_hostname",
-        "label": "Redirect URL",
+        "label": "Redirect to",
         "info": "Exclude http:// or https://.",
         "placeholder": "your-wordpress.com"
       }
