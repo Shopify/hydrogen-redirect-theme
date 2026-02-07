@@ -8,6 +8,17 @@
     "theme_support_url": "https://github.com/Shopify/hydrogen-redirect-theme/issues"
   },
   {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Displayed at 32 x 32px"
+      }
+    ]
+  },
+  {
     "name": "Storefront",
     "settings": [
       {

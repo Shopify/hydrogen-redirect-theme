@@ -16,6 +16,12 @@ detection checkpoint, and discount links.
 5. Go to **Theme settings -> Storefront** and configure `storefront_hostname`
 6. **Publish** the theme
 
+## Favicon
+
+You can configure the `favicon` value in **Theme settings -> Logo**.
+
+The favicon is used on `/checkouts/` urls (and any unredirected online store urls)
+
 ## Custom redirects
 
 You can configure the `custom_redirects` value in **Theme settings > Storefront**.
