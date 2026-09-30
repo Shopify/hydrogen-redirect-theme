@@ -15,7 +15,12 @@
     {% comment %}
       Should redirect if the template is defined (will be undefined for app proxies like /apps|a|community|tools/*)
     {% endcomment %}
-    {%- assign should_redirect = template != blank -%}
+    {%- liquid
+      assign should_redirect = false
+      if template != blank
+        assign should_redirect = true
+      endif
+    -%}
 
     {%- if settings.storefront_hostname != blank and should_redirect -%}
       <link rel="canonical" href="https://{{ settings.storefront_hostname }}{{ request.path }}">

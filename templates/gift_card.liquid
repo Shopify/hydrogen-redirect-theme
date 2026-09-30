@@ -15,10 +15,7 @@
     {%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros | strip_html -%}
 
     <title>
-      {{ "Here's your {{ value }}
-      gift card for
-      {{ shop }}
-      !" | t: value: formatted_initial_value, shop: shop.name }}
+      Here's your {{ formatted_initial_value }} gift card for {{ shop.name | escape }}!
     </title>
 
     <meta name="description" content="Your gift card">
@@ -43,7 +40,7 @@
 
       {%- assign gift_card_balance = gift_card.balance | money -%}
       {%- if gift_card.balance != gift_card.initial_value -%}
-        <p class="gift-card__label caption-large">{{ "Remaining {{ balance }}" | t: balance: gift_card_balance }}</p>
+        <p class="gift-card__label caption-large">Remaining {{ gift_card_balance }}</p>
       {%- endif -%}
     </header>
 
@@ -81,13 +78,13 @@
               src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}"
               width="120"
               height="40"
-              alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}"
+              alt="Add to Apple Wallet"
               loading="lazy"
             >
           </a>
         {%- endif -%}
         <div class="gift-card__buttons no-print">
-          {% if settings.storefront_hostname %}
+          {% if settings.storefront_hostname != blank %}
             <a
               href="https://{{ settings.storefront_hostname }}"
               class="button"
